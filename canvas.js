@@ -95,11 +95,6 @@ $(document).ready(function() {
     $('#canvas').on('mousemove', function(event) {
         mouseX = event.offsetX;
         mouseY = event.offsetY;
-        // console.log(event.clientX + " " + event.offsetX);
-        c.beginPath();
-        c.arc(mouseX, mouseY, 2, 0, 2*Math.PI);
-        c.strokeStyle = 'rgba(255, 255, 255, 1)';
-        c.fillStyle = 'rgb(a255, 255, 255, 1)';
     });
 
     $('#canvas').on('click', function(event) {
@@ -240,7 +235,8 @@ $(document).ready(function() {
             context.stroke();
             if(fillColor != undefined) {
                 context.fill();
-                context.fillStyle = fillColor;
+                let fillColorWithAlpha = fillColor + (parseInt(this.a*255)).toString(16);
+                context.fillStyle = fillColorWithAlpha;
             }
         } 
     }
